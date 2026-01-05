@@ -1,0 +1,117 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2759
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 JetBrainsMono-Regular;\f1\fnil\fcharset0 JetBrainsMono-Italic;\f2\fnil\fcharset0 JetBrainsMono-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red193\green100\blue30;\red152\green168\blue186;\red158\green128\blue255;
+\red193\green62\blue29;\red91\green144\blue62;\red73\green123\blue61;\red193\green43\blue12;\red10\green112\blue204;
+\red193\green43\blue12;\red150\green128\blue255;\red152\green168\blue186;}
+{\*\expandedcolortbl;;\csgenericrgb\c75640\c39311\c11952;\csgenericrgb\c59779\c65774\c73089;\csgenericrgb\c62067\c50000\c100000;
+\csgenericrgb\c75599\c24494\c11327;\csgenericrgb\c35846\c56374\c24421;\csgenericrgb\c28670\c48057\c23743;\csgenericrgb\c75530\c16821\c4679;\csgenericrgb\c3954\c44020\c79895;
+\csgenericrgb\c75504\c16712\c4745;\csgenericrgb\c58720\c50000\c100000;\csgenericrgb\c59787\c65770\c73100;}
+\deftab480
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+
+\f0\fs26 \cf2 use\cf3  \cf4 AppleScript\cf3  \cf5 version\cf3  \cf6 "2.4"\cf3  
+\f1\i \cf7 -- Yosemite (10.10) or later
+\f0\i0 \cf3 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf2 use\cf3  
+\f1\i \cf8 scripting additions
+\f0\i0 \cf3 \
+\
+\cf2 global\cf3  \cf3 gLogFile\cf3 \
+\
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+
+\f1\i \cf7 ###################################################################
+\f0\i0 \cf3 \
+
+\f1\i \cf7 #
+\f0\i0 \cf3 \
+
+\f1\i \cf7 ###################################################################
+\f0\i0 \cf3 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf2 on\cf3  
+\f2\b \cf5 enable logging to file
+\f0\b0 \cf3  \cf3 theLogFile\cf3 \
+	\cf2 set\cf3  \cf3 gLogFile\cf3  \cf2 to\cf3  \cf3 theLogFile\cf3 \
+	\cf2 try\cf3 \
+		\cf2 set\cf3  \cf3 openFile\cf3  \cf2 to\cf3  \cf9 open for access\cf3  \cf3 gLogFile\cf3  \cf2 with\cf3  \cf9 write permission\cf3 \
+		\cf9 close access\cf3  \cf3 openFile\cf3 \
+		\cf2 return\cf3  \cf4 true\cf3 \
+	\cf2 on\cf3  \cf2 error\cf3  \cf3 e\cf3 \
+		\cf2 return\cf3  \cf4 false\cf3 \
+	\cf2 end\cf3  \cf2 try\cf3 \
+\cf2 end\cf3  
+\f2\b \cf5 enable logging to file
+\f0\b0 \cf3 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+
+\f1\i \cf7 ###################################################################
+\f0\i0 \cf3 \
+
+\f1\i \cf7 #
+\f0\i0 \cf3 \
+
+\f1\i \cf7 ###################################################################
+\f0\i0 \cf3 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf2 on\cf3  
+\f2\b \cf5 log message
+\f0\b0 \cf3  \cf3 theText\cf3  \cf5 as\cf3  \cf3 theLevel\cf3  : \cf4 info\cf3 \
+	\cf2 set\cf3  \cf3 getDate\cf3  \cf2 to\cf3  \cf6 "date '+%Y-%m-%d %H:%M:%S'"\cf3 \
+	\cf2 set\cf3  \cf3 timestamp\cf3  \cf2 to\cf3  \cf9 do shell script\cf3  \cf3 getDate\cf3 \
+	\cf2 if\cf3  \cf3 theLevel\cf3  \cf2 is\cf3  \cf4 info\cf3  \cf2 then\cf3 \
+		\cf2 set\cf3  \cf3 msg\cf3  \cf2 to\cf3  \cf3 timestamp\cf3  & \cf6 ", INFO "\cf3  & \cf3 theText\cf3  & \cf4 linefeed\cf3 \
+	\cf2 else\cf3 \
+		\cf2 if\cf3  \cf3 theLevel\cf3  \cf2 is\cf3  \cf4 alarm\cf3  \cf2 then\cf3 \
+			\cf2 set\cf3  \cf3 msg\cf3  \cf2 to\cf3  \cf3 timestamp\cf3  & \cf6 ", WARNING "\cf3  & \cf3 theText\cf3  & \cf4 linefeed\cf3 \
+		\cf2 else\cf3 \
+			\cf2 if\cf3  \cf3 theLevel\cf3  \cf2 is\cf3  \cf4 fault\cf3  \cf2 then\cf3 \
+				\cf2 set\cf3  \cf3 msg\cf3  \cf2 to\cf3  \cf3 timestamp\cf3  & \cf6 ", ERROR "\cf3  & \cf3 theText\cf3  & \cf4 linefeed\cf3 \
+			\cf2 else\cf3 \
+				\cf2 set\cf3  \cf3 msg\cf3  \cf2 to\cf3  \cf3 timestamp\cf3  & \cf6 ", SEVERE "\cf3  & \cf3 theText\cf3  & \cf4 linefeed\cf3 \
+			\cf2 end\cf3  \cf2 if\cf3 \
+		\cf2 end\cf3  \cf2 if\cf3 \
+	\cf2 end\cf3  \cf2 if\cf3 \
+	\cf2 try\cf3 \
+		\cf2 if\cf3  \cf3 gLogFile\cf3  \cf2 is\cf3  \cf2 not\cf3  
+\f1\i \cf8 missing value
+\f0\i0 \cf3  \cf2 then\cf3 \
+			\cf10 writeto\cf3 (\cf3 gLogFile\cf3 , \cf3 msg\cf3 )\
+		\cf2 end\cf3  \cf2 if\cf3 \
+	\cf2 on\cf3  \cf2 error\cf3  \cf3 e\cf3 \
+		
+\f2\b \cf5 log
+\f0\b0 \cf3  \cf3 msg\cf3 \
+	\cf2 end\cf3  \cf2 try\cf3 \
+\cf2 end\cf3  
+\f2\b \cf5 log message
+\f0\b0 \cf3 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+
+\f1\i \cf7 ###################################################################
+\f0\i0 \cf3 \
+
+\f1\i \cf7 #
+\f0\i0 \cf3 \
+
+\f1\i \cf7 ###################################################################
+\f0\i0 \cf3 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf2 on\cf3  \cf10 writeto\cf3 (\cf3 targetFile\cf3 , \cf3 theData\cf3 )\
+	\cf2 try\cf3 \
+		\cf2 set\cf3  \cf3 openFile\cf3  \cf2 to\cf3  \cf9 open for access\cf3  \cf3 targetFile\cf3  \cf2 with\cf3  \cf9 write permission\cf3 \
+		\cf9 write\cf3  \cf3 theData\cf3  \cf9 to\cf3  \cf3 openFile\cf3  \cf9 starting at\cf3  \cf11 eof\cf3  \cf9 as\cf3  \'ab
+\f1\i \cf8 class
+\f0\i0 \cf3  \cf12 utf8\cf3 \'bb\
+		\cf9 close access\cf3  \cf3 openFile\cf3 \
+		\cf2 return\cf3  \cf4 true\cf3 \
+	\cf2 on\cf3  \cf2 error\cf3 \
+		\cf2 try\cf3 \
+			\cf9 close access\cf3  \cf3 openFile\cf3 \
+		\cf2 end\cf3  \cf2 try\cf3 \
+		\cf2 return\cf3  \cf4 false\cf3 \
+	\cf2 end\cf3  \cf2 try\cf3 \
+\cf2 end\cf3  \cf10 writeto\cf3 \
+}

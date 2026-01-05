@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary>
+	<suite name="hbStringUtilities" code="NYTT" description="Commands for editing text">
+		<command name="regex expression" code="NYTTCOMP"
+			description="Checks whether the regex expression matches the text">
+			<direct-parameter type="text" description="The regex expression"/>
+			<parameter name="matches" type="text" description="The text" code="MATC"/>
+			<result type="boolean" description="True if text matches regex. Otherweise false"/>
+			<documentation>
+				<html>
+					<![CDATA[
+					  <p>Checks whether the regex expression matches the text</p>
+  					<p style="font-family:Verdana, sans-serif;text-indent:1.5em;">regex expression 
+  					<span style="color:#408000;"> regex </span>matches 
+  					<span style="color:blue;font-weight:bold;"> text</span></p>
+					]]>
+				</html>
+			</documentation>
+		</command>
+
+		<command name="transform text" code="NYTTTRNS" description="Transform the targeted text">
+			<direct-parameter type="text" description="The text to transform"/>
+			<parameter name="to" code="ToCs" type="case conversion"
+				description="The transformation to apply"/>
+			<result type="text" description="The modified source string"/>
+			<documentation>
+				<html>
+					<![CDATA[
+					<p>Apply a text transformation to the targeted text. For example, change the case of the targeted text to upper case.</p>
+					<p style="font-family:Verdana, sans-serif;text-indent:1.5em;">set the <span style="color:#408000;">changedText</span> to <span style="color:blue;font-weight:bold;">transform text</span> "How now brown cow." <span style="color:blue;">to</span> <span style="color:#4A1E7F;">upper case</span></p>
+					<p style="font-family:Verdana, sans-serif;text-indent:1.5em;">--&gt; result: "HOW NOW BROWN COW."</p>
+				]]>
+				</html>
+			</documentation>
+		</command>
+		<enumeration name="case conversion" code="CSEC">
+			<enumerator name="lower case" code="LowC" description=""/>
+			<enumerator name="upper case" code="UppC" description=""/>
+			<enumerator name="word case" code="WrdC" description=""/>
+		</enumeration>
+		<command name="replace text" code="NYTTREPL"
+			description="Replace occurrences of a search string in the targeted text">
+			<direct-parameter type="text" description="The text to find"/>
+			<parameter name="with" code="RPLT" type="text"
+				description="The text to use as replacement"/>
+			<parameter name="in" code="SRCT" type="text" description="The text in which to search"/>
+			<result type="text" description="The modified source string"/>
+			<documentation>
+				<html>
+					<![CDATA[
+					<p>Replace instances of a specified string, found in the targeted text, with another specified string.</p>
+					<p style="font-family:Verdana, sans-serif;text-indent:1.5em;">set the <span style="color:#408000;">changedText</span> to <span style="color:blue;font-weight:bold;">replace text</span> "Sally" <span style="color:blue;">with</span> "Fred" <span style="color:blue;">in</span> "See Sally run. Run Sally run!"</p>
+					<p style="font-family:Verdana, sans-serif;text-indent:1.5em;">--&gt; result: "See Fred run. Run Fred run!"</p>
+				]]>
+				</html>
+			</documentation>
+		</command>
+		<command name="remove white space around" code="NYTTTRIM"
+			description="Remove spaces and tabs around the targeted text">
+			<direct-parameter type="text" description="The text to trim"/>
+			<result type="text" description="The modified source string"/>
+			<documentation>
+				<html>
+					<![CDATA[
+					<p>Removes spaces and tabs from around a specified string.</p>
+					<p style="font-family:Verdana, sans-serif;text-indent:1.5em;">set the <span style="color:#408000;">changedText</span> to <span style="color:blue;font-weight:bold;">remove white space around</span> "   Trudy Anchover   "</p>
+					<p style="font-family:Verdana, sans-serif;text-indent:1.5em;">--&gt; result: "Trudy Anchover"</p>
+				]]>
+				</html>
+			</documentation>
+		</command>
+	</suite>
+</dictionary>

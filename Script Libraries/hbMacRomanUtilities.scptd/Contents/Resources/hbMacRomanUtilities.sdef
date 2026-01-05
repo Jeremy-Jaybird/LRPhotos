@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary>
+    <suite name="hbMacRomanUtilities" code="HBMR"
+        description="Helpers for Mac Roman encoded strings.">
+        <command name="transform macroman text" code="HBMRMRU8"
+            description="Converts mac roman encoded string to utf-8 string.">
+            <direct-parameter type="text" description="The mac roman encoded string"/>
+            <parameter name="to" code="TOEN" type="encodings" description="the new encoding"/>
+            <result type="text" description="The utf-8 string"/>
+            <documentation>
+                <html>
+                    <![CDATA[<p>set utf8Text to transform macroman text «text» to UTF-8<p>]]>
+                </html>
+            </documentation>
+        </command>
+        <enumeration name="encodings" code="ENCO">
+            <enumerator name="UTF8" code="UTF8"/>
+        </enumeration>
+
+    </suite>
+</dictionary>

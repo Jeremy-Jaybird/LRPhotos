@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary>
+    <suite name="hb Photos Services" code="HBPS" description="Commands for Photos app services.">
+        <command name="display media item id" code="HBPSDIID"
+            description="Displays the media item id for the current seletced photo or video.">
+            <documentation>
+                <html>
+                    <![CDATA[<p>To be used in an Automater shortcut.<p>]]>
+                </html>
+            </documentation>
+        </command>
+        <command name="search by image" code="HBPSSBYI"
+            description="Searches by images in Yandex with the current selected photos.">
+            <documentation>
+                <html>
+                    <![CDATA[<p>To be used in an Automater shortcut.<p>]]>
+                </html>
+            </documentation>
+        </command>
+    </suite>
+</dictionary>
+

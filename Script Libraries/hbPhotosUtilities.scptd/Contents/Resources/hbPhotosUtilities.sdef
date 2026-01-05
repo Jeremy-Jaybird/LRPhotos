@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary>
+    <suite name="hbPhotosUtilities" code="HBPU" description="Commands to work with Photos app.">
+        <command name="spotlight media item by id" code="HBPUSMID"
+            description="Spotlights a photo or video which is identified by it's id.">
+            <direct-parameter type="text" description="The id of the media item to be displayed."/>
+            <result type="media item" description="The media item which was displayed. Missing value if media item was not found."/>
+            <documentation>
+                <html>
+                    <![CDATA[<p>spotlight media item id "3514B712-432F-420C-8AAD-14A2463271E1/L0/001"<p>]]>
+                </html>
+            </documentation>
+        </command>
+        <command name="spotlight album by path" code="HBPUSAPA"
+            description="Spotlights an album which is identifed by it's path.">
+            <direct-parameter type="text" description="The path of the album to be displayed."/>
+            <parameter name="create if not exists" type="boolean" optional="yes" code="CINE" description="defines action if album can not be found."/>
+            <result type="album" description="The album which was displayed. Missing value if album was not found."/>
+            <documentation>
+                <html>
+                    <![CDATA[<p>spotlight album by path "/folder 1/folder 2/my album" [without create if not exist]<p>]]>
+                </html>
+            </documentation>
+        </command>
+        <command name="album by path" code="HBPUGAPA"
+            description="Get album for a given it's path.">
+            <direct-parameter type="text" description="The path of the album which should be return"/>
+            <parameter name="create if not exists" type="boolean" optional="yes" code="CINE" description="defines action if album can not be found."/>
+            <result type="album" description="The album. Missing value if album not found."/>
+            <documentation>
+                <html>
+                    <![CDATA[<p>album by path "/folder 1/folder 2/my album" [without create if not exist]<p>]]>
+                </html>
+            </documentation>
+        </command>
+        <command name="path for album id" code="HBPUGPBA"
+            description="Get the path for a given album id.">
+            <direct-parameter type="text" description="The album id for which the path should be returned."/>
+            <result type="text" description="The path. Missing value if the album does not exist."/>
+            <documentation>
+                <html>
+                    <![CDATA[<p>path for album theAlbum<p>]]>
+                </html>
+            </documentation>
+        </command>
+        <command name="every album containing media item id" code="HBPUACID"
+            description="Get all albums who contains media item id.">
+            <direct-parameter type="text" description="The media item id"/>
+            <result type="list of media item" description="reference(s) to found media item(s)"/>
+            <documentation>
+                <html>
+                    <![CDATA[<p>every album containing media item id "3514B712-432F-420C-8AAD-14A2463271E1/L0/001"<p>]]>
+                </html>
+            </documentation>
+        </command>
+    </suite>
+</dictionary>
